@@ -2924,165 +2924,94 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         // Form submission
         // Form submission with Supabase integration
         async function submitApplication(event) {
-            event.preventDefault();
+    event.preventDefault();
 
-            console.log('🚀 Form submission started');
+    console.log('🚀 Form submission started');
 
-            // Check if Supabase is initialized
-            if (!supabase) {
-                console.error('❌ Supabase client not initialized');
-                showNotification('Database connection error. Please refresh the page and try again.', 'error');
-                return;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const portfolio = document.getElementById('portfolio').value.trim();
+    const videoLink = document.getElementById('videoLink').value.trim();
+    const storyIdea = document.getElementById('storyIdea').value.trim();
+
+    console.log('📝 Form data collected:', { name, email, mobile, portfolio, videoLink: !!videoLink, storyIdea: !!storyIdea });
+
+    // Basic validation
+    if (!name || !email || !mobile || !portfolio) {
+        console.warn('⚠️ Validation failed: Missing required fields');
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        console.warn('⚠️ Validation failed: Invalid email format');
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+    }
+
+    // Mobile validation (more flexible)
+    const cleanMobile = mobile.replace(/[\s\-\(\)]/g, '');
+    if (cleanMobile.length < 10 || cleanMobile.length > 15) {
+        console.warn('⚠️ Validation failed: Invalid mobile number length');
+        showNotification('Please enter a valid mobile number (10-15 digits).', 'error');
+        return;
+    }
+
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+
+    // Update button to show loading state
+    submitBtn.innerHTML = 'Submitting... <svg class="w-4 h-4 ml-2 inline-block animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>';
+    submitBtn.disabled = true;
+
+    try {
+        console.log('📤 Sending data to Google Forms...');
+
+        // GOOGLE FORM ENTRY MAPPING
+        const formData = new URLSearchParams();
+        formData.append("entry.225602744", name);       // Full Name
+        formData.append("entry.1338576347", email);      // Email
+        formData.append("entry.701297568", mobile);     // Mobile
+        formData.append("entry.232409794", portfolio);   // Portfolio
+        formData.append("entry.674582317", videoLink);   // Video Link
+        formData.append("entry.1661514076", storyIdea);  // Story Idea
+
+        // SEND REQUEST TO GOOGLE FORMS
+        await fetch(
+            "https://docs.google.com/forms/d/e/1FAIpQLScJrEfCv3BFyXqSadEJ_o0eNRFvAymtrk2VuyXgM7H5goQNkA/formResponse",
+            {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: formData.toString()
             }
+        );
 
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const mobile = document.getElementById('mobile').value.trim();
-            const portfolio = document.getElementById('portfolio').value.trim();
-            const videoLink = document.getElementById('videoLink').value.trim();
-            const storyIdea = document.getElementById('storyIdea').value.trim();
+        console.log('✅ Google Form submitted successfully');
 
-            console.log('📝 Form data collected:', { name, email, mobile, portfolio, videoLink: !!videoLink, storyIdea: !!storyIdea });
+        // Success message
+        showFormSuccessMessage('Form Successfully Submitted. We\'ll reach out to you soon.');
 
-            // Basic validation
-            if (!name || !email || !mobile || !portfolio) {
-                console.warn('⚠️ Validation failed: Missing required fields');
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
+        // Close modal and reset form
+        setTimeout(() => {
+            closeModal();
+            document.getElementById('applicationForm').reset();
+        }, 3000);
 
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                console.warn('⚠️ Validation failed: Invalid email format');
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-
-            // Mobile validation (more flexible)
-            const cleanMobile = mobile.replace(/[\s\-\(\)]/g, '');
-            if (cleanMobile.length < 10 || cleanMobile.length > 15) {
-                console.warn('⚠️ Validation failed: Invalid mobile number length');
-                showNotification('Please enter a valid mobile number (10-15 digits).', 'error');
-                return;
-            }
-
-            const submitBtn = event.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-
-            // Update button to show loading state
-            submitBtn.innerHTML = 'Submitting... <svg class="w-4 h-4 ml-2 inline-block animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>';
-            submitBtn.disabled = true;
-
-            try {
-                console.log('📤 Preparing data for Supabase...');
-
-                // Prepare data for Supabase
-                const applicationData = {
-                    full_name: name,
-                    email: email.toLowerCase(),
-                    mobile_number: mobile,
-                    portfolio_url: portfolio,
-                    example_video_url: videoLink || null,
-                    story_idea: storyIdea || null,
-                    application_status: 'pending',
-                    submitted_at: new Date().toISOString(),
-                    user_agent: navigator.userAgent,
-                    referrer: document.referrer || 'direct'
-                };
-
-                console.log('📊 Application data prepared:', applicationData);
-
-                // Test connection before inserting
-                console.log('🔍 Testing database connection before insert...');
-                const connectionTest = await testDatabaseConnection();
-                if (!connectionTest) {
-                    throw new Error('Database connection failed');
-                }
-
-                console.log('💾 Inserting data into Supabase...');
-
-                // Try direct SQL insert if RLS is blocking
-                let data, error;
-
-                try {
-                    // Method 1: Standard insert
-                    const result = await supabase
-                        .from('creator_applications')
-                        .insert([applicationData])
-                        .select();
-
-                    data = result.data;
-                    error = result.error;
-
-                } catch (insertError) {
-                    console.error('Insert method failed:', insertError);
-                    error = insertError;
-                }
-
-                if (error) {
-                    console.error('❌ Supabase insertion error:', error);
-                    console.error('Error details:', {
-                        message: error.message,
-                        details: error.details,
-                        hint: error.hint,
-                        code: error.code
-                    });
-                    throw error;
-                }
-
-                console.log('✅ Data inserted successfully:', data);
-
-                // Send confirmation email
-                const emailSent = await sendConfirmationEmail(email, name, data[0]?.id);
-
-                // Success - show confirmation
-                // Success - show confirmation in form
-                showFormSuccessMessage('Form Successfully Submitted. We\'ll reach out to you soon.');
-
-                // Close modal and reset form after delay
-                setTimeout(() => {
-                    closeModal();
-                    document.getElementById('applicationForm').reset();
-                }, 3000);
-
-            } catch (error) {
-                console.error('❌ Submission error:', error);
-
-                let errorMessage = 'There was an error submitting your application. ';
-
-                // Handle specific error types
-                if (error.message?.includes('duplicate key') || error.code === '23505') {
-                    errorMessage = 'This email has already been used for an application. Please use a different email address.';
-                } else if (error.message?.includes('relation') && error.message?.includes('does not exist')) {
-                    errorMessage = 'Database table not found. Please contact support to set up the database.';
-                } else if (error.message?.includes('permission denied') || error.code === '42501' || error.message?.includes('row-level security policy')) {
-                    errorMessage = `Database permission error (RLS Policy). 
-
-🔧 To fix this, run this SQL in your Supabase SQL Editor:
-
-CREATE POLICY "Allow public form submissions" ON creator_applications
-FOR INSERT TO anon WITH CHECK (true);
-
-Or temporarily disable RLS:
-ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;`;
-                } else if (error.message?.includes('network') || !navigator.onLine) {
-                    errorMessage = 'Network error. Please check your internet connection and try again.';
-                } else if (error.message?.includes('Database connection failed')) {
-                    errorMessage = 'Unable to connect to database. Please try again in a few moments.';
-                } else {
-                    errorMessage += `Error: ${error.message}`;
-                }
-
-                showNotification(errorMessage, 'error');
-
-            } finally {
-                // Reset button state
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                console.log('🔄 Form submission completed');
-            }
-        }
+    } catch (error) {
+        console.error('❌ Submission error:', error);
+        showNotification('Error submitting form. Please try again.', 'error');
+    } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        console.log('🔄 Form submission completed');
+    }
+}
 
         // Form success message function
         function showFormSuccessMessage(message) {
