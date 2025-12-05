@@ -2439,8 +2439,8 @@
     <script>
 
         // Supabase Configuration
-        const SUPABASE_URL = 'https://wodfmmxlipcmiukhbdbb.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndvZGZtbXhsaXBjbWl1a2hiZGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxNDI1NzMsImV4cCI6MjA3NzcxODU3M30.9lOHquxIB7JCuN6hGVXvhhHCXBxH6-pJqQZnZGcrEg4';
+        const SUPABASE_URL = 'https://zxybzjxyesyjpezeiyvr.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4eWJ6anh5ZXN5anBlemVpeXZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5Mzc0NzgsImV4cCI6MjA4MDUxMzQ3OH0.GN1yTFixvSWaSIs7pUBdHoSBwAaKzRhhZb1lp4gEHt8';
 
         // Initialize Supabase client
         let supabase;
@@ -2704,8 +2704,8 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
                 // Example using EmailJS (you need to set this up)
                 if (typeof emailjs !== 'undefined') {
                     const result = await emailjs.send(
-                        'YOUR_SERVICE_ID',
-                        'YOUR_TEMPLATE_ID',
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_TEMPLATE_ID,
                         emailData
                     );
                     console.log('✅ Email sent via EmailJS');
@@ -2993,6 +2993,22 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         );
 
         console.log('✅ Google Form submitted successfully');
+
+        // Send confirmation email via EmailJS
+        if (typeof emailjs !== 'undefined') {
+            try {
+                const emailParams = {
+                    to_email: email,
+                    user_name: name,
+                    message: `Thank you for applying to Crensa Creator Beta! Your application has been received and is under review. We'll get back to you within 48 hours.`
+                };
+                
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams);
+                console.log('✅ Confirmation email sent via EmailJS');
+            } catch (emailError) {
+                console.warn('⚠️ EmailJS error (form still submitted):', emailError);
+            }
+        }
 
         // Success message
         showFormSuccessMessage('Form Successfully Submitted. We\'ll reach out to you soon.');
