@@ -2968,6 +2968,46 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
     submitBtn.disabled = true;
 
     try {
+        // Submit to BOTH Supabase AND Google Forms
+        
+        // 1. SAVE TO SUPABASE
+        console.log('📤 Sending data to Supabase...');
+        
+        const supabaseData = {
+            full_name: name,
+            email: email,
+            mobile_number: mobile,
+            portfolio_url: portfolio,
+            story_idea: storyIdea || null
+        };
+
+        // Only add video_link if it exists and is not empty
+        if (videoLink && videoLink.trim()) {
+            supabaseData.video_link = videoLink;
+        }
+
+        if (supabase) {
+            try {
+                const { data: supabaseResponse, error: supabaseError } = await supabase
+                    .from('creator_applications')
+                    .insert([supabaseData])
+                    .select();
+
+                if (supabaseError) {
+                    console.error('❌ Supabase error:', supabaseError);
+                    console.warn('⚠️ Supabase submission failed, but Google Forms was successful');
+                } else {
+                    console.log('✅ Data saved to Supabase successfully:', supabaseResponse);
+                }
+            } catch (error) {
+                console.error('❌ Supabase submission failed:', error);
+                console.warn('⚠️ Supabase error, but continuing with Google Forms...');
+            }
+        } else {
+            console.warn('⚠️ Supabase client not initialized');
+        }
+
+        // 2. SEND TO GOOGLE FORMS
         console.log('📤 Sending data to Google Forms...');
 
         // GOOGLE FORM ENTRY MAPPING
