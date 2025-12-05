@@ -47,6 +47,36 @@
             animation: gradientShift 4s ease-in-out infinite;
         }
 
+        .animate-marquee {
+            display: inline-flex;
+            gap: 2rem;
+            animation: marquee-loop 10s linear infinite;
+        }
+
+        /* Perfect seamless loop */
+        @keyframes marquee-loop {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-110%);
+            }
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            gap: 2rem;
+            animation: marquee-loop 10s linear infinite;
+        }
+
+
+
         @keyframes gradientShift {
             0% {
                 background-position: 0% 50%;
@@ -217,10 +247,12 @@
         }
 
         @keyframes iconFloat {
+
             0%,
             100% {
                 transform: translateY(0px) scale(1);
             }
+
             50% {
                 transform: translateY(-10px) scale(1.05);
             }
@@ -293,10 +325,12 @@
         }
 
         @keyframes crensaGlow {
+
             0%,
             100% {
                 box-shadow: 0 0 20px rgba(98, 207, 111, 0.3);
             }
+
             50% {
                 box-shadow: 0 0 40px rgba(98, 207, 111, 0.6), 0 0 60px rgba(213, 231, 60, 0.4);
             }
@@ -478,10 +512,11 @@
             .mobile-benefits {
                 display: block;
             }
-            
+
             /* Adjust content position on mobile to account for left-shifted curve */
             .timeline-container .modern-card {
-                margin-left: 50px !important; /* Push card over from the left curve position */
+                margin-left: 50px !important;
+                /* Push card over from the left curve position */
             }
         }
 
@@ -1248,9 +1283,9 @@
             max-width: 900px;
             margin: 0 auto;
             /* Added padding for SVG buffer, ensuring steps align to a 0-100% height */
-            padding: 20px 0; 
+            padding: 20px 0;
             /* Set a fixed height for the SVG to draw the curve correctly */
-            height: 1400px; 
+            height: 1400px;
         }
 
         /* Hide timeline container on mobile - show swipe cards instead */
@@ -1259,6 +1294,7 @@
                 display: none !important;
             }
         }
+
         /* --- END NEW TIMELINE STYLES --- */
     </style>
 </head>
@@ -1376,9 +1412,7 @@
                     <!-- YouTube Card -->
                     <div class="platform-card slide-in-left overflow-hidden">
                         <div class="platform-card-image relative overflow-hidden">
-                            <img src="images/utube.png" 
-                                 alt="YouTube" 
-                                 class="w-full h-full object-cover">
+                            <img src="images/utube.png" alt="YouTube" class="w-full h-full object-cover">
                         </div>
                         <div class="platform-card-header youtube-bg">
                             <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 24 24">
@@ -1396,9 +1430,7 @@
                     <!-- TikTok Card -->
                     <div class="platform-card slide-in-left overflow-hidden" style="animation-delay: 0.2s;">
                         <div class="platform-card-image relative overflow-hidden">
-                            <img src="images/tiktok.png" 
-                                 alt="TikTok" 
-                                 class="w-full h-full object-cover">
+                            <img src="images/tiktok.png" alt="TikTok" class="w-full h-full object-cover">
                         </div>
                         <div class="platform-card-header tiktok-bg">
                             <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 24 24">
@@ -1408,7 +1440,8 @@
                             <h3 class="text-2xl font-black">TIKTOK WAVE</h3>
                         </div>
                         <div class="platform-card-content">
-                            <p class="text-base leading-relaxed">Early starters quickly built massive followings and landed
+                            <p class="text-base leading-relaxed">Early starters quickly built massive followings and
+                                landed
                                 lucrative contracts that boosted their growth and visibility.</p>
                         </div>
                     </div>
@@ -1442,9 +1475,7 @@
                             <div class="swipe-card active" data-index="0">
                                 <div class="platform-card h-full">
                                     <div class="platform-card-image relative overflow-hidden">
-                                        <img src="images/utube1.png" 
-                                             alt="YouTube" 
-                                             class="w-full h-full object-cover">
+                                        <img src="images/utube1.png" alt="YouTube" class="w-full h-full object-cover">
                                     </div>
                                     <div class="platform-card-header youtube-bg">
                                         <svg class="w-7 h-7 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -1464,9 +1495,7 @@
                             <div class="swipe-card next" data-index="1">
                                 <div class="platform-card h-full">
                                     <div class="platform-card-image relative overflow-hidden">
-                                        <img src="images/tiktok1.png" 
-                                             alt="TikTok" 
-                                             class="w-full h-full object-cover">
+                                        <img src="images/tiktok1.png" alt="TikTok" class="w-full h-full object-cover">
                                     </div>
                                     <div class="platform-card-header tiktok-bg">
                                         <svg class="w-7 h-7 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -1476,7 +1505,8 @@
                                         <h3 class="text-xl font-black">TIKTOK WAVE</h3>
                                     </div>
                                     <div class="platform-card-content">
-                                        <p class="text-sm leading-relaxed">Early starters quickly built massive followings
+                                        <p class="text-sm leading-relaxed">Early starters quickly built massive
+                                            followings
                                             and landed lucrative contracts that boosted their growth and visibility.</p>
                                     </div>
                                 </div>
@@ -1491,7 +1521,8 @@
                                         </div>
                                     </div>
                                     <div class="platform-card-header crensa-bg">
-                                        <div class="w-7 h-7 bg-white rounded-full flex items-center justify-center mr-2">
+                                        <div
+                                            class="w-7 h-7 bg-white rounded-full flex items-center justify-center mr-2">
                                             <span class="text-crensa-navy font-black text-base">C</span>
                                         </div>
                                         <h3 class="text-xl font-black">CRENSA NOW</h3>
@@ -1519,8 +1550,7 @@
             </div>
 
             <div class="text-center mt-8">
-                <button onclick="openModal()"
-                    class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg">
+                <button onclick="openModal()" class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg">
                     Be One of the First 50 Creators
                 </button>
             </div>
@@ -1805,10 +1835,13 @@
                 <!-- Road on the Left Side -->
                 <div class="absolute left-8 top-0 bottom-0 w-24 z-0">
                     <!-- Road Background -->
-                    <div class="absolute inset-0 bg-gradient-to-b from-gray-700 via-gray-600 to-gray-700 rounded-lg shadow-lg"></div>
-                    
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-gray-700 via-gray-600 to-gray-700 rounded-lg shadow-lg">
+                    </div>
+
                     <!-- Road Markings (Dashed Lines) -->
-                    <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 flex flex-col justify-around py-4">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 flex flex-col justify-around py-4">
                         <div class="h-12 bg-yellow-300 rounded-full mb-4"></div>
                         <div class="h-12 bg-yellow-300 rounded-full mb-4"></div>
                         <div class="h-12 bg-yellow-300 rounded-full mb-4"></div>
@@ -1816,7 +1849,7 @@
                         <div class="h-12 bg-yellow-300 rounded-full mb-4"></div>
                         <div class="h-12 bg-yellow-300 rounded-full"></div>
                     </div>
-                    
+
                     <!-- Road Edge Lines -->
                     <div class="absolute left-1 top-0 bottom-0 w-0.5 bg-white/30"></div>
                     <div class="absolute right-1 top-0 bottom-0 w-0.5 bg-white/30"></div>
@@ -1830,13 +1863,16 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-25 top-8 w-28 h-0.5 bg-crensa-green"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-green ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-green ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="flex-1 p-6 modern-card rounded-xl border border-crensa-green/30">
                                 <h3 class="text-xl font-bold text-crensa-lime">1. Register on Crensa</h3>
                                 <p class="mt-2 text-white/90">
-                                    Create your creator profile in minutes and gain access to all our publishing tools and community features.
+                                    Create your creator profile in minutes and gain access to all our publishing tools
+                                    and community features.
                                 </p>
                             </div>
                         </div>
@@ -1848,13 +1884,16 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-28 top-8 w-28 h-0.5 bg-crensa-teal"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-teal ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-teal ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="flex-1 p-6 modern-card rounded-xl border border-crensa-teal/30">
                                 <h3 class="text-xl font-bold text-crensa-teal">2. Upload Your Series</h3>
                                 <p class="mt-2 text-white/90">
-                                    Use our simple interface to submit your first original content series, complete with metadata and cover art.
+                                    Use our simple interface to submit your first original content series, complete with
+                                    metadata and cover art.
                                 </p>
                             </div>
                         </div>
@@ -1866,13 +1905,16 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-28 top-8 w-28 h-0.5 bg-crensa-lime"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-lime ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-lime ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="flex-1 p-6 modern-card rounded-xl border border-crensa-lime/30">
                                 <h3 class="text-xl font-bold text-crensa-green">3. Await Verification</h3>
                                 <p class="mt-2 text-white/90">
-                                    Our moderation team reviews your content to ensure it meets our quality and guideline standards (typically within 48 hours).
+                                    Our moderation team reviews your content to ensure it meets our quality and
+                                    guideline standards (typically within 48 hours).
                                 </p>
                             </div>
                         </div>
@@ -1884,13 +1926,16 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-28 top-8 w-28 h-0.5 bg-crensa-yellow"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-yellow ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-yellow ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="flex-1 p-6 modern-card rounded-xl border border-crensa-yellow/30">
                                 <h3 class="text-xl font-bold text-crensa-yellow">4. Launch Your Journey</h3>
                                 <p class="mt-2 text-white/90">
-                                    Once approved, your series goes live and is immediately searchable and visible to our global audience.
+                                    Once approved, your series goes live and is immediately searchable and visible to
+                                    our global audience.
                                 </p>
                             </div>
                         </div>
@@ -1902,13 +1947,16 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-28 top-8 w-28 h-0.5 bg-crensa-pink"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-pink ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-pink ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="flex-1 p-6 modern-card rounded-xl border border-crensa-pink/30">
                                 <h3 class="text-xl font-bold text-crensa-pink">5. Amplify Your Reach</h3>
                                 <p class="mt-2 text-white/90">
-                                    Utilize built-in promotional tools and analytics dashboards to grow your viewership and audience engagement.
+                                    Utilize built-in promotional tools and analytics dashboards to grow your viewership
+                                    and audience engagement.
                                 </p>
                             </div>
                         </div>
@@ -1920,13 +1968,17 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-28 top-8 w-28 h-0.5 bg-crensa-lime"></div>
                             <!-- Step Circle (Highlighted) -->
-                            <div class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-lime ring-4 ring-crensa-green z-10"></div>
-                            
+                            <div
+                                class="absolute -left-32 top-6 w-6 h-6 rounded-full bg-crensa-lime ring-4 ring-crensa-green z-10">
+                            </div>
+
                             <!-- Content Card -->
-                            <div class="flex-1 p-6 modern-card rounded-xl border-2 border-crensa-lime/80 transition duration-300 hover:scale-[1.02] bg-gradient-to-r from-crensa-green/30 to-crensa-teal/30">
+                            <div
+                                class="flex-1 p-6 modern-card rounded-xl border-2 border-crensa-lime/80 transition duration-300 hover:scale-[1.02] bg-gradient-to-r from-crensa-green/30 to-crensa-teal/30">
                                 <h3 class="text-xl font-bold text-crensa-lime">6. Start Earning</h3>
                                 <p class="mt-2 text-white/90">
-                                    Begin generating revenue through views, subscriptions, and direct fan support—enjoy the rewards of your hard work!
+                                    Begin generating revenue through views, subscriptions, and direct fan support—enjoy
+                                    the rewards of your hard work!
                                 </p>
                             </div>
                         </div>
@@ -1940,10 +1992,13 @@
                     <!-- Road on the Left Side -->
                     <div class="absolute left-4 top-0 bottom-0 w-12 z-0">
                         <!-- Road Background -->
-                        <div class="absolute inset-0 bg-gradient-to-b from-gray-700 via-gray-600 to-gray-700 rounded-lg shadow-lg"></div>
-                        
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-gray-700 via-gray-600 to-gray-700 rounded-lg shadow-lg">
+                        </div>
+
                         <!-- Road Markings (Dashed Lines) -->
-                        <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 flex flex-col justify-around py-4">
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 flex flex-col justify-around py-4">
                             <div class="h-6 bg-yellow-300 rounded-full"></div>
                             <div class="h-6 bg-yellow-300 rounded-full"></div>
                             <div class="h-6 bg-yellow-300 rounded-full"></div>
@@ -1951,7 +2006,7 @@
                             <div class="h-6 bg-yellow-300 rounded-full"></div>
                             <div class="h-6 bg-yellow-300 rounded-full"></div>
                         </div>
-                        
+
                         <!-- Road Edge Lines -->
                         <div class="absolute left-0.5 top-0 bottom-0 w-0.5 bg-white/30"></div>
                         <div class="absolute right-0.5 top-0 bottom-0 w-0.5 bg-white/30"></div>
@@ -1964,8 +2019,10 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-12 top-6 w-12 h-0.5 bg-crensa-green"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-green ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-green ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="p-4 modern-card rounded-xl border border-crensa-green/30">
                                 <h3 class="text-base font-bold text-crensa-lime">1. Register on Crensa</h3>
@@ -1980,8 +2037,10 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-12 top-6 w-12 h-0.5 bg-crensa-teal"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-teal ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-teal ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="p-4 modern-card rounded-xl border border-crensa-teal/30">
                                 <h3 class="text-base font-bold text-crensa-teal">2. Upload Your Series</h3>
@@ -1996,8 +2055,10 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-12 top-6 w-12 h-0.5 bg-crensa-lime"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-lime ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-lime ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="p-4 modern-card rounded-xl border border-crensa-lime/30">
                                 <h3 class="text-base font-bold text-crensa-green">3. Await Verification</h3>
@@ -2012,8 +2073,10 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-12 top-6 w-12 h-0.5 bg-crensa-yellow"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-yellow ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-yellow ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="p-4 modern-card rounded-xl border border-crensa-yellow/30">
                                 <h3 class="text-base font-bold text-crensa-yellow">4. Launch Your Journey</h3>
@@ -2028,8 +2091,10 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-12 top-6 w-12 h-0.5 bg-crensa-pink"></div>
                             <!-- Step Circle -->
-                            <div class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-pink ring-4 ring-[#70B2B2] z-10"></div>
-                            
+                            <div
+                                class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-pink ring-4 ring-[#70B2B2] z-10">
+                            </div>
+
                             <!-- Content Card -->
                             <div class="p-4 modern-card rounded-xl border border-crensa-pink/30">
                                 <h3 class="text-base font-bold text-crensa-pink">5. Amplify Your Reach</h3>
@@ -2044,10 +2109,13 @@
                             <!-- Connecting Line from Road -->
                             <div class="absolute -left-12 top-6 w-12 h-0.5 bg-crensa-lime"></div>
                             <!-- Step Circle (Highlighted) -->
-                            <div class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-lime ring-4 ring-crensa-green z-10 shadow-lg shadow-crensa-green/50"></div>
-                            
+                            <div
+                                class="absolute -left-16 top-4 w-5 h-5 rounded-full bg-crensa-lime ring-4 ring-crensa-green z-10 shadow-lg shadow-crensa-green/50">
+                            </div>
+
                             <!-- Content Card -->
-                            <div class="p-4 modern-card rounded-xl border-2 border-crensa-lime/80 bg-gradient-to-r from-crensa-green/30 to-crensa-teal/30 shadow-lg">
+                            <div
+                                class="p-4 modern-card rounded-xl border-2 border-crensa-lime/80 bg-gradient-to-r from-crensa-green/30 to-crensa-teal/30 shadow-lg">
                                 <h3 class="text-base font-bold text-crensa-lime">6. Start Earning</h3>
                                 <p class="mt-2 text-white/80 text-sm leading-relaxed">
                                     Generate revenue through views and subscriptions.
@@ -2115,7 +2183,7 @@
                     <div class="text-sm opacity-70 mb-2">If your 3-part series gets</div>
                     <div class="text-2xl font-bold text-crensa-yellow mb-2" id="viewsDisplay">1.5M views</div>
                     <div class="text-sm opacity-70 mb-2">=</div>
-                    <div class="text-3xl font-bold text-crensa-green" id="earningsDisplay">₹1.2L potential earnings
+                    <div class="text-3xl font-bold gradient-text" id="earningsDisplay">₹1.2L potential earnings
                     </div>
                 </div>
 
@@ -2346,6 +2414,167 @@
         </div>
     </section>
 
+    <section id="brandpartnership" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl md:text-5xl font-bold text-center mb-6 text-crensa-green">100+ Brands Collaborated</h2>
+            <div class="relative overflow-hidden mt-8">
+                <!-- marquee wrapper -->
+                <div class="brand-marquee">
+                    <div class="flex overflow-hidden space-x-16">
+                        <div class="marquee-track flex items-center space-x-8">
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
+                                        stroke-width="1.5" fill="none"></circle>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">A</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
+                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">B</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12h18" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">C</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="8" r="3" stroke="#ffffff" stroke-opacity="0.9"
+                                        stroke-width="1.5" fill="none"></circle>
+                                    <rect x="6" y="13" width="12" height="6" rx="2" stroke="#ffffff"
+                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">D</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4l16 16" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">E</text>
+                                </svg>
+                            </div>
+
+                            <!-- repeat items so the marquee looks continuous -->
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
+                                        stroke-width="1.5" fill="none"></circle>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">A</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
+                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">B</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="marquee-track flex items-center space-x-8" aria-hidden="true">
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
+                                        stroke-width="1.5" fill="none"></circle>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">A</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
+                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">B</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12h18" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">C</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="8" r="3" stroke="#ffffff" stroke-opacity="0.9"
+                                        stroke-width="1.5" fill="none"></circle>
+                                    <rect x="6" y="13" width="12" height="6" rx="2" stroke="#ffffff"
+                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">D</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4l16 16" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">E</text>
+                                </svg>
+                            </div>
+
+                            <!-- repeat items so the marquee looks continuous -->
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
+                                        stroke-width="1.5" fill="none"></circle>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">A</text>
+                                </svg>
+                            </div>
+
+                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
+                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
+                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
+                                        font-family="sans-serif" opacity="0.9">B</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-12" style="background-color: #70B2B2;">
         <div class="container mx-auto px-6 text-center">
@@ -2370,7 +2599,16 @@
             </div>
 
             <div class="modal-form-container" id="modalFormContainer">
-                <h2 class="text-2xl font-bold mb-6 text-center gradient-text">Join Crensa Creator Beta</h2>
+                <h2 class="text-2xl font-bold mb-2 text-center gradient-text">Join Crensa Creator Beta</h2>
+                <div class="flex overflow-hidden space-x-16">
+                    <p class="whitespace-nowrap inline-block animate-marquee text-red-600 font-semibold text-base">
+                        Fill up the form & we will message you with the next step if selected for beta.
+                    </p>
+                    <p class="whitespace-nowrap inline-block animate-marquee text-red-600 font-semibold text-base">
+                        Fill up the form & we will message you with the next step if selected for beta.
+                    </p>
+                    
+                </div>
                 <form id="applicationForm" onsubmit="submitApplication(event)">
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" style="color: #2D3748;">Full Name
@@ -2924,150 +3162,150 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         // Form submission
         // Form submission with Supabase integration
         async function submitApplication(event) {
-    event.preventDefault();
+            event.preventDefault();
 
-    console.log('🚀 Form submission started');
+            console.log('🚀 Form submission started');
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mobile = document.getElementById('mobile').value.trim();
-    const portfolio = document.getElementById('portfolio').value.trim();
-    const videoLink = document.getElementById('videoLink').value.trim();
-    const storyIdea = document.getElementById('storyIdea').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const portfolio = document.getElementById('portfolio').value.trim();
+            const videoLink = document.getElementById('videoLink').value.trim();
+            const storyIdea = document.getElementById('storyIdea').value.trim();
 
-    console.log('📝 Form data collected:', { name, email, mobile, portfolio, videoLink: !!videoLink, storyIdea: !!storyIdea });
+            console.log('📝 Form data collected:', { name, email, mobile, portfolio, videoLink: !!videoLink, storyIdea: !!storyIdea });
 
-    // Basic validation
-    if (!name || !email || !mobile || !portfolio) {
-        console.warn('⚠️ Validation failed: Missing required fields');
-        showNotification('Please fill in all required fields.', 'error');
-        return;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        console.warn('⚠️ Validation failed: Invalid email format');
-        showNotification('Please enter a valid email address.', 'error');
-        return;
-    }
-
-    // Mobile validation (more flexible)
-    const cleanMobile = mobile.replace(/[\s\-\(\)]/g, '');
-    if (cleanMobile.length < 10 || cleanMobile.length > 15) {
-        console.warn('⚠️ Validation failed: Invalid mobile number length');
-        showNotification('Please enter a valid mobile number (10-15 digits).', 'error');
-        return;
-    }
-
-    const submitBtn = event.target.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-
-    // Update button to show loading state
-    submitBtn.innerHTML = 'Submitting... <svg class="w-4 h-4 ml-2 inline-block animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>';
-    submitBtn.disabled = true;
-
-    try {
-        // Submit to BOTH Supabase AND Google Forms
-        
-        // 1. SAVE TO SUPABASE
-        console.log('📤 Sending data to Supabase...');
-        
-        const supabaseData = {
-            full_name: name,
-            email: email,
-            mobile_number: mobile,
-            portfolio_url: portfolio,
-            story_idea: storyIdea || null
-        };
-
-        // Only add video_link if it exists and is not empty
-        if (videoLink && videoLink.trim()) {
-            supabaseData.video_link = videoLink;
-        }
-
-        if (supabase) {
-            try {
-                const { data: supabaseResponse, error: supabaseError } = await supabase
-                    .from('creator_applications')
-                    .insert([supabaseData])
-                    .select();
-
-                if (supabaseError) {
-                    console.error('❌ Supabase error:', supabaseError);
-                    console.warn('⚠️ Supabase submission failed, but Google Forms was successful');
-                } else {
-                    console.log('✅ Data saved to Supabase successfully:', supabaseResponse);
-                }
-            } catch (error) {
-                console.error('❌ Supabase submission failed:', error);
-                console.warn('⚠️ Supabase error, but continuing with Google Forms...');
+            // Basic validation
+            if (!name || !email || !mobile || !portfolio) {
+                console.warn('⚠️ Validation failed: Missing required fields');
+                showNotification('Please fill in all required fields.', 'error');
+                return;
             }
-        } else {
-            console.warn('⚠️ Supabase client not initialized');
-        }
 
-        // 2. SEND TO GOOGLE FORMS
-        console.log('📤 Sending data to Google Forms...');
-
-        // GOOGLE FORM ENTRY MAPPING
-        const formData = new URLSearchParams();
-        formData.append("entry.225602744", name);       // Full Name
-        formData.append("entry.1338576347", email);      // Email
-        formData.append("entry.701297568", mobile);     // Mobile
-        formData.append("entry.232409794", portfolio);   // Portfolio
-        formData.append("entry.674582317", videoLink);   // Video Link
-        formData.append("entry.1661514076", storyIdea);  // Story Idea
-
-        // SEND REQUEST TO GOOGLE FORMS
-        await fetch(
-            "https://docs.google.com/forms/d/e/1FAIpQLScJrEfCv3BFyXqSadEJ_o0eNRFvAymtrk2VuyXgM7H5goQNkA/formResponse",
-            {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: formData.toString()
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                console.warn('⚠️ Validation failed: Invalid email format');
+                showNotification('Please enter a valid email address.', 'error');
+                return;
             }
-        );
 
-        console.log('✅ Google Form submitted successfully');
+            // Mobile validation (more flexible)
+            const cleanMobile = mobile.replace(/[\s\-\(\)]/g, '');
+            if (cleanMobile.length < 10 || cleanMobile.length > 15) {
+                console.warn('⚠️ Validation failed: Invalid mobile number length');
+                showNotification('Please enter a valid mobile number (10-15 digits).', 'error');
+                return;
+            }
 
-        // Send confirmation email via EmailJS
-        if (typeof emailjs !== 'undefined') {
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            // Update button to show loading state
+            submitBtn.innerHTML = 'Submitting... <svg class="w-4 h-4 ml-2 inline-block animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>';
+            submitBtn.disabled = true;
+
             try {
-                const emailParams = {
-                    to_email: email,
-                    user_name: name,
-                    message: `Thank you for applying to Crensa Creator Beta! Your application has been received and is under review. We'll get back to you within 48 hours.`
+                // Submit to BOTH Supabase AND Google Forms
+
+                // 1. SAVE TO SUPABASE
+                console.log('📤 Sending data to Supabase...');
+
+                const supabaseData = {
+                    full_name: name,
+                    email: email,
+                    mobile_number: mobile,
+                    portfolio_url: portfolio,
+                    story_idea: storyIdea || null
                 };
-                
-                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams);
-                console.log('✅ Confirmation email sent via EmailJS');
-            } catch (emailError) {
-                console.warn('⚠️ EmailJS error (form still submitted):', emailError);
+
+                // Only add video_link if it exists and is not empty
+                if (videoLink && videoLink.trim()) {
+                    supabaseData.video_link = videoLink;
+                }
+
+                if (supabase) {
+                    try {
+                        const { data: supabaseResponse, error: supabaseError } = await supabase
+                            .from('creator_applications')
+                            .insert([supabaseData])
+                            .select();
+
+                        if (supabaseError) {
+                            console.error('❌ Supabase error:', supabaseError);
+                            console.warn('⚠️ Supabase submission failed, but Google Forms was successful');
+                        } else {
+                            console.log('✅ Data saved to Supabase successfully:', supabaseResponse);
+                        }
+                    } catch (error) {
+                        console.error('❌ Supabase submission failed:', error);
+                        console.warn('⚠️ Supabase error, but continuing with Google Forms...');
+                    }
+                } else {
+                    console.warn('⚠️ Supabase client not initialized');
+                }
+
+                // 2. SEND TO GOOGLE FORMS
+                console.log('📤 Sending data to Google Forms...');
+
+                // GOOGLE FORM ENTRY MAPPING
+                const formData = new URLSearchParams();
+                formData.append("entry.225602744", name);       // Full Name
+                formData.append("entry.1338576347", email);      // Email
+                formData.append("entry.701297568", mobile);     // Mobile
+                formData.append("entry.232409794", portfolio);   // Portfolio
+                formData.append("entry.674582317", videoLink);   // Video Link
+                formData.append("entry.1661514076", storyIdea);  // Story Idea
+
+                // SEND REQUEST TO GOOGLE FORMS
+                await fetch(
+                    "https://docs.google.com/forms/d/e/1FAIpQLScJrEfCv3BFyXqSadEJ_o0eNRFvAymtrk2VuyXgM7H5goQNkA/formResponse",
+                    {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: formData.toString()
+                    }
+                );
+
+                console.log('✅ Google Form submitted successfully');
+
+                // Send confirmation email via EmailJS
+                if (typeof emailjs !== 'undefined') {
+                    try {
+                        const emailParams = {
+                            to_email: email,
+                            user_name: name,
+                            message: `Thank you for applying to Crensa Creator Beta! Your application has been received and is under review. We'll get back to you within 48 hours.`
+                        };
+
+                        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams);
+                        console.log('✅ Confirmation email sent via EmailJS');
+                    } catch (emailError) {
+                        console.warn('⚠️ EmailJS error (form still submitted):', emailError);
+                    }
+                }
+
+                // Success message
+                showFormSuccessMessage('Form Successfully Submitted. We\'ll reach out to you soon.');
+
+                // Close modal and reset form
+                setTimeout(() => {
+                    closeModal();
+                    document.getElementById('applicationForm').reset();
+                }, 3000);
+
+            } catch (error) {
+                console.error('❌ Submission error:', error);
+                showNotification('Error submitting form. Please try again.', 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                console.log('🔄 Form submission completed');
             }
         }
-
-        // Success message
-        showFormSuccessMessage('Form Successfully Submitted. We\'ll reach out to you soon.');
-
-        // Close modal and reset form
-        setTimeout(() => {
-            closeModal();
-            document.getElementById('applicationForm').reset();
-        }, 3000);
-
-    } catch (error) {
-        console.error('❌ Submission error:', error);
-        showNotification('Error submitting form. Please try again.', 'error');
-    } finally {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-        console.log('🔄 Form submission completed');
-    }
-}
 
         // Form success message function
         function showFormSuccessMessage(message) {
@@ -3643,7 +3881,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
             function nextCard() {
                 const wasLastCard = currentProcessTimelineIndex === cards.length - 1;
                 currentProcessTimelineIndex = (currentProcessTimelineIndex + 1) % cards.length;
-                
+
                 if (wasLastCard) {
                     cardsContainer.style.transition = 'none';
                     updateCards();
@@ -3658,7 +3896,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
             function prevCard() {
                 const wasFirstCard = currentProcessTimelineIndex === 0;
                 currentProcessTimelineIndex = (currentProcessTimelineIndex - 1 + cards.length) % cards.length;
-                
+
                 if (wasFirstCard) {
                     cardsContainer.style.transition = 'none';
                     updateCards();
