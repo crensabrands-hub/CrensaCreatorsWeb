@@ -69,6 +69,14 @@
             white-space: nowrap;
         }
 
+        /* #card-xyz{
+            background-image: url(/CrensaCreatorsWeb/img/image.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:cover ;
+            margin-left: 10px;
+        } */
+
         .marquee-track {
             display: inline-flex;
             gap: 2rem;
@@ -754,7 +762,7 @@
         /* Mobile responsive text sizing */
         @media (max-width: 768px) {
             .testimonial-quote {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
                 line-height: 1.5;
                 margin-bottom: 1.5rem;
             }
@@ -782,7 +790,7 @@
 
         .testimonial-quote::before {
             content: '"';
-            font-size: 4rem;
+            font-size: 3rem;
             position: absolute;
             top: -1rem;
             left: -1rem;
@@ -792,7 +800,7 @@
 
         .testimonial-quote::after {
             content: '"';
-            font-size: 4rem;
+            font-size: 3rem;
             position: absolute;
             bottom: -2rem;
             right: -1rem;
@@ -809,7 +817,7 @@
 
         .testimonial-role {
             opacity: 0.8;
-            font-size: 1rem;
+            font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.7);
         }
 
@@ -1372,7 +1380,7 @@
                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clip-rule="evenodd"></path>
                     </svg>
-                    Limited Access, Only 100 Creators Accepted
+                    Limited Access, Only 50 Creators Accepted
                 </div>
             </div>
 
@@ -1380,21 +1388,19 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto fade-in">
                 <div class="modern-card p-8 rounded-2xl text-center">
                     <div class="earnings-counter text-4xl md:text-5xl font-black mb-2" id="earnings">₹2.4L</div>
-                    <div class="text-sm opacity-80 uppercase tracking-wider">Average Creator Earnings</div>
+                    <div class="text-sm opacity-80 uppercase tracking-wider">Excepted Creator Earnings</div>
                 </div>
                 <div class="modern-card p-8 rounded-2xl text-center">
                     <div class="earnings-counter text-4xl md:text-5xl font-black mb-2" id="views">4.2M</div>
-                    <div class="text-sm opacity-80 uppercase tracking-wider">Total Platform Views</div>
+                    <div class="text-sm opacity-80 uppercase tracking-wider">Monthly Views</div>
                 </div>
                 <div class="modern-card p-8 rounded-2xl text-center">
-                    <div class="earnings-counter text-4xl md:text-5xl font-black mb-2" id="followers">156K</div>
-                    <div class="text-sm opacity-80 uppercase tracking-wider">New Followers Generated</div>
+                    <div class="earnings-counter text-4xl md:text-5xl font-black mb-2" id="followers">96</div>
+                    <div class="text-sm opacity-80 uppercase tracking-wider">Brands Collaborated</div>
                 </div>
             </div>
         </div>
     </section>
-
-
 
     <!-- Social Proof Hook -->
     <section class="py-20 fade-in">
@@ -2254,8 +2260,8 @@
                             <div class="testimonial-quote">
                                 Can't wait for my series to drop on Crensa. The beta experience has been incredible!
                             </div>
-                            <div class="testimonial-author">Rahul M.</div>
-                            <div class="testimonial-role">Comedy Creator • 3.1M Followers</div>
+                            <div class="testimonial-author">chilladitea</div>
+                            <div class="testimonial-role">35k Followers</div>
                         </div>
                     </div>
 
@@ -2272,8 +2278,8 @@
                                 Crensa understands what creators need. It's not just another platform, it's our
                                 stage.
                             </div>
-                            <div class="testimonial-author">Sneha R.</div>
-                            <div class="testimonial-role">Lifestyle Creator • 1.5M Followers</div>
+                            <div class="testimonial-author">Kanak_Kesarwani</div>
+                            <div class="testimonial-role">14k Followers</div>
                         </div>
                     </div>
 
@@ -2281,17 +2287,17 @@
                     <div class="testimonial-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-avatar">
-                                <div
-                                    class="w-20 h-20 bg-gradient-to-br from-crensa-navy to-crensa-magenta rounded-full flex items-center justify-center mx-auto">
-                                    <span class="text-white font-bold text-2xl">V</span>
-                                </div>
+                                <!-- <div class="w-20 h-20 bg-gradient-to-br from-crensa-navy to-crensa-magenta rounded-full flex items-center justify-center mx-auto">
+                                    
+                                </div> -->
+                                <img class="w-60" src="/CrensaCreatorsWeb/img/logo1.png" alt="">
                             </div>
                             <div class="testimonial-quote">
                                 The monetization opportunities are game-changing. Early creators will definitely win
                                 big.
                             </div>
-                            <div class="testimonial-author">Vikram T.</div>
-                            <div class="testimonial-role">Tech Creator • 2.7M Followers</div>
+                            <div class="testimonial-author">Manik K Aroraa</div>
+                            <div class="testimonial-role">58K Followers</div>
                         </div>
                     </div>
                 </div>
@@ -2416,7 +2422,8 @@
 
     <section id="brandpartnership" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-2xl md:text-5xl font-bold text-center mb-6 text-crensa-green">100+ Brands Collaborated</h2>
+            <h2 class="text-2xl md:text-5xl font-bold text-center mb-16 text-white">100+ Brands <span
+                    class="gradient-text">Collaborated</span></h2>
             <div class="relative overflow-hidden mt-8">
                 <!-- marquee wrapper -->
                 <div class="brand-marquee">
@@ -2575,6 +2582,12 @@
         </div>
     </section>
 
+    <!-- <section>
+        <div id="card-xyz" class="final-cta-btn text-crensa-teal px-8 py-4 md:px-12 md:py-6 rounded-full text-lg md:text-2xl font-bold animate-pulse-slow">
+            <span class="px-2 flex items-center justify-center">5 out of 50 Creaters will get the chance to be our lanuching ceremony</span>
+        </div>
+    </section> -->
+
     <!-- Footer -->
     <footer class="py-12" style="background-color: #70B2B2;">
         <div class="container mx-auto px-6 text-center">
@@ -2607,7 +2620,7 @@
                     <p class="whitespace-nowrap inline-block animate-marquee text-red-600 font-semibold text-base">
                         Fill up the form & we will message you with the next step if selected for beta.
                     </p>
-                    
+
                 </div>
                 <form id="applicationForm" onsubmit="submitApplication(event)">
                     <div class="mb-6">
@@ -3006,11 +3019,11 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
             setInterval(() => {
                 const earningsValue = (Math.random() * 2 + 1.5).toFixed(1);
                 const viewsValue = (Math.random() * 2 + 3.5).toFixed(1);
-                const followersValue = Math.floor(Math.random() * 50 + 120);
+                const followersValue = Math.floor(Math.random() * (100 - 90 + 1)) + 90;
 
                 earnings.textContent = `₹${earningsValue}L`;
                 views.textContent = `${viewsValue}M`;
-                followers.textContent = `${followersValue}K`;
+                followers.textContent = `${followersValue}`;
             }, 3000);
         }
 
