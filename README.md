@@ -58,6 +58,10 @@ Crensa/
 - Edge (latest)
 - Mobile browsers
 
+## SCREENSHOT 
+<img width="1917" height="880" alt="image" src="https://github.com/user-attachments/assets/615cb244-9ba1-4dd8-833d-335a98c3ae31" />
+
+
 ## 📄 License
 All rights reserved - Crensa
 
