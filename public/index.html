@@ -8,6 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lobster&family=Pacifico&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -2269,10 +2274,7 @@
                     <div class="testimonial-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-avatar">
-                                <div
-                                    class="w-20 h-20 bg-gradient-to-br from-crensa-pink to-crensa-rose rounded-full flex items-center justify-center mx-auto">
-                                    <span class="text-white font-bold text-2xl">S</span>
-                                </div>
+                                <img class="w-60" src="/img/Kanak_Kesarwani.png" alt="Kanak Kesarwani Avatar">
                             </div>
                             <div class="testimonial-quote">
                                 Crensa understands what creators need. It's not just another platform, it's our
@@ -2287,10 +2289,7 @@
                     <div class="testimonial-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-avatar">
-                                <!-- <div class="w-20 h-20 bg-gradient-to-br from-crensa-navy to-crensa-magenta rounded-full flex items-center justify-center mx-auto">
-                                    
-                                </div> -->
-                                <img class="w-60" src="/CrensaCreatorsWeb/img/logo1.png" alt="">
+                                <img class="w-60" src="/img/Manik.png" alt="Manik K Aroraa Avatar">
                             </div>
                             <div class="testimonial-quote">
                                 The monetization opportunities are game-changing. Early creators will definitely win
@@ -2582,11 +2581,43 @@
         </div>
     </section>
 
-    <!-- <section>
-        <div id="card-xyz" class="final-cta-btn text-crensa-teal px-8 py-4 md:px-12 md:py-6 rounded-full text-lg md:text-2xl font-bold animate-pulse-slow">
-            <span class="px-2 flex items-center justify-center">5 out of 50 Creaters will get the chance to be our lanuching ceremony</span>
+    <section class="w-full bg-gradient-to-r from-crensa-navy via-crensa-magenta to-crensa-pink py-3">
+        <div class="text-center">
+            <span class="text-lg font-bold text-white animate-glow custom-script">
+                5 out of 50 Creators will get the chance to be in our launching ceremony
+            </span>
         </div>
-    </section> -->
+    </section>
+
+    <style>
+        .custom-script {
+
+            font-family: "Lobster", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+            }
+        }
+
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+    </style>
+
+
+
+
 
     <!-- Footer -->
     <footer class="py-12" style="background-color: #70B2B2;">
