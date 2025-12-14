@@ -17,6 +17,15 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-50%)' },
+                        }
+                    },
                     colors: {
                         'crensa-navy': '#01164D',
                         'crensa-green': '#62CF6F',
@@ -52,6 +61,40 @@
             animation: gradientShift 4s ease-in-out infinite;
         }
 
+        /* Gradient mask for the fading effect on sides */
+        .mask-gradient {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        /* Utility for pausing animation on hover */
+        .pause-on-hover:hover .animate-infinite-scroll {
+            animation-play-state: paused;
+        }
+
+        .custom-script {
+            font-family: "Lobster", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+            }
+        }
+
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+
         .animate-marquee {
             display: inline-flex;
             gap: 2rem;
@@ -73,14 +116,6 @@
             overflow: hidden;
             white-space: nowrap;
         }
-
-        /* #card-xyz{
-            background-image: url(/CrensaCreatorsWeb/img/image.png);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size:cover ;
-            margin-left: 10px;
-        } */
 
         .marquee-track {
             display: inline-flex;
@@ -2419,167 +2454,166 @@
         </div>
     </section>
 
-    <section id="brandpartnership" class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-2xl md:text-5xl font-bold text-center mb-16 text-white">100+ Brands <span
-                    class="gradient-text">Collaborated</span></h2>
-            <div class="relative overflow-hidden mt-8">
-                <!-- marquee wrapper -->
-                <div class="brand-marquee">
-                    <div class="flex overflow-hidden space-x-16">
-                        <div class="marquee-track flex items-center space-x-8">
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
-                                        stroke-width="1.5" fill="none"></circle>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">A</text>
-                                </svg>
-                            </div>
+    <!-- Sponsor Section Start -->
+    <section class="w-full py-24 border-y border-white/5" style="background-color: rgb(76, 140, 140);">
+        <div class="container mx-auto px-6 mb-12 text-center">
+            <span class="text-sm font-medium uppercase tracking-widest text-slate-200">
+                <h2 class="text-2xl md:text-5xl font-bold text-center mb-16 text-white">100+ Brands <span
+                        class="gradient-text">Collaborated</span></h2>
+            </span>
+        </div>
 
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
-                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">B</text>
-                                </svg>
-                            </div>
+        <!-- Marquee Container -->
+        <div class="w-full overflow-hidden select-none mask-gradient relative">
+            <!-- 
+             Inner Track 
+             Note: 'w-max' ensures it takes the width of children. 
+             'min-w-full' ensures it fills the screen.
+             'animate-infinite-scroll' triggers the tailwind animation defined in head.
+        -->
+            <div id="marquee-inner"
+                class="flex w-max min-w-full shrink-0 gap-12 sm:gap-24 items-center justify-around animate-infinite-scroll hover:[animation-play-state:paused]">
 
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 12h18" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">C</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="8" r="3" stroke="#ffffff" stroke-opacity="0.9"
-                                        stroke-width="1.5" fill="none"></circle>
-                                    <rect x="6" y="13" width="12" height="6" rx="2" stroke="#ffffff"
-                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">D</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4l16 16" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">E</text>
-                                </svg>
-                            </div>
-
-                            <!-- repeat items so the marquee looks continuous -->
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
-                                        stroke-width="1.5" fill="none"></circle>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">A</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
-                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">B</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="marquee-track flex items-center space-x-8" aria-hidden="true">
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
-                                        stroke-width="1.5" fill="none"></circle>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">A</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
-                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">B</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 12h18" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">C</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="8" r="3" stroke="#ffffff" stroke-opacity="0.9"
-                                        stroke-width="1.5" fill="none"></circle>
-                                    <rect x="6" y="13" width="12" height="6" rx="2" stroke="#ffffff"
-                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">D</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4l16 16" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">E</text>
-                                </svg>
-                            </div>
-
-                            <!-- repeat items so the marquee looks continuous -->
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-opacity="0.9"
-                                        stroke-width="1.5" fill="none"></circle>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">A</text>
-                                </svg>
-                            </div>
-
-                            <div class="partner w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#ffffff"
-                                        stroke-opacity="0.9" stroke-width="1.5" fill="none"></rect>
-                                    <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="10"
-                                        font-family="sans-serif" opacity="0.9">B</text>
-                                </svg>
-                            </div>
-                        </div>
+                <!-- Item 1: BoltShift -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 2L5 48H45L25 2Z" fill="none" stroke="currentColor" stroke-width="4" />
+                            <path d="M25 15L15 40H35L25 15Z" fill="currentColor" />
+                        </svg>
                     </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        BoltShift
+                    </span>
                 </div>
+
+                <!-- Item 2: Nietzsche -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4" />
+                            <rect x="15" y="15" width="20" height="20" rx="4" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        Nietzsche
+                    </span>
+                </div>
+
+                <!-- Item 3: FeatherDev -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 35C5 35 2 30 2 25C2 18 8 15 10 15C12 8 20 2 28 2C35 2 40 8 40 15C45 16 48 20 48 25C48 30 45 35 40 35H10Z"
+                                fill="none" stroke="currentColor" stroke-width="4" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        FeatherDev
+                    </span>
+                </div>
+
+                <!-- Item 4: Spherule -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="25" cy="25" r="15" fill="currentColor" />
+                            <circle cx="25" cy="25" r="22" stroke="currentColor" stroke-width="3" fill="none"
+                                stroke-dasharray="5 5" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        Spherule
+                    </span>
+                </div>
+
+                <!-- Item 5: GlobalBank -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="25" width="10" height="20" fill="currentColor" />
+                            <rect x="20" y="15" width="10" height="30" fill="currentColor" />
+                            <rect x="35" y="5" width="10" height="40" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        GlobalBank
+                    </span>
+                </div>
+
+                <!-- Item 6: LightHouse -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 2L45 10V20C45 35 25 48 25 48C25 48 5 35 5 20V10L25 2Z" fill="none"
+                                stroke="currentColor" stroke-width="4" />
+                            <circle cx="25" cy="25" r="6" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        LightHouse
+                    </span>
+                </div>
+
+                <!-- Item 7: Acme Corp -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 45L15 5L25 45L35 5L45 45" fill="none" stroke="currentColor" stroke-width="4"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        Acme Corp
+                    </span>
+                </div>
+
+                <!-- Item 8: Quantum -->
+                <div class="group relative flex flex-col items-center justify-center gap-4 transition-all duration-300">
+                    <div
+                        class="h-16 w-16 sm:h-20 sm:w-20 text-white transition-colors duration-300 group-hover:text-indigo-200">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="currentColor"
+                                stroke-width="3" />
+                            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="currentColor" stroke-width="3"
+                                transform="rotate(60 25 25)" />
+                            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="currentColor" stroke-width="3"
+                                transform="rotate(120 25 25)" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
+                        Quantum
+                    </span>
+                </div>
+
             </div>
         </div>
     </section>
+    <!-- Sponsor Section End -->
 
     <section class="w-full bg-gradient-to-r from-crensa-navy via-crensa-magenta to-crensa-pink py-3">
         <div class="text-center">
@@ -2588,36 +2622,6 @@
             </span>
         </div>
     </section>
-
-    <style>
-        .custom-script {
-
-            font-family: "Lobster", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-
-        @keyframes glow {
-
-            0%,
-            100% {
-                filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.3));
-            }
-
-            50% {
-                filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
-            }
-        }
-
-        .animate-glow {
-            animation: glow 2s ease-in-out infinite;
-        }
-    </style>
-
-
-
-
 
     <!-- Footer -->
     <footer class="py-12" style="background-color: #70B2B2;">
@@ -2801,6 +2805,21 @@
                 return false;
             }
         }
+
+        // We need to duplicate the list items to ensure that when the animation
+        // moves the content to -50%, the second set of items is exactly where the first set started.
+        const marqueeInner = document.getElementById('marquee-inner');
+
+        // Get all current children (the 8 items)
+        const children = Array.from(marqueeInner.children);
+
+        // Clone them and append to the container
+        children.forEach(child => {
+            const clone = child.cloneNode(true);
+            // Hide duplicates from screen readers to avoid repetition
+            clone.setAttribute('aria-hidden', 'true');
+            marqueeInner.appendChild(clone);
+        });
 
         // RLS Policy checker and helper
         async function checkRLSPolicies() {
