@@ -2700,13 +2700,13 @@
                         <label class="block text-sm font-medium mb-2" style="color: #2D3748;">Series
                             Link *</label>
                             <p class="text-xs mt-1 opacity-70" style="color: #4A5568;">Share just 3 episodes of your best series. :</p>
-                        <input type="url" id="videoLink"
+                        <input type="url" id="Episode1"
                             class="w-full p-3 my-2 rounded-lg bg-white bg-opacity-10 border border-crensa-green border-opacity-30 focus:border-crensa-lime focus:outline-none transition-colors duration-300"
                             placeholder="Episode 1">
-                        <input type="url" id="videoLink"
+                        <input type="url" id="Episode2"
                             class="w-full p-3 my-2 rounded-lg bg-white bg-opacity-10 border border-crensa-green border-opacity-30 focus:border-crensa-lime focus:outline-none transition-colors duration-300"
                             placeholder="Episode 2">
-                        <input type="url" id="videoLink"
+                        <input type="url" id="Episode3"
                             class="w-full p-3 my-2 rounded-lg bg-white bg-opacity-10 border border-crensa-green border-opacity-30 focus:border-crensa-lime focus:outline-none transition-colors duration-300"
                             placeholder="Episode 3">
                     </div>
@@ -2744,9 +2744,9 @@
 
         try {
             supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            console.log('✅ Supabase client initialized successfully');
+            // console.log('✅ Supabase client initialized successfully');
         } catch (error) {
-            console.error('❌ Failed to initialize Supabase client:', error);
+            // console.error('❌ Failed to initialize Supabase client:', error);
         }
 
         // EmailJS Configuration (replace with your actual keys)
@@ -2757,7 +2757,7 @@
         // Initialize EmailJS
         if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
             emailjs.init(EMAILJS_PUBLIC_KEY);
-            console.log('✅ EmailJS initialized');
+            // console.log('✅ EmailJS initialized');
         }
 
         // Test database connection
@@ -2842,7 +2842,7 @@
                     full_name: 'Test User',
                     email: `test-${Date.now()}@example.com`, // Unique email to avoid conflicts
                     mobile_number: '1234567890',
-                    portfolio_url: 'https://example.com',
+                    Profile_url: 'https://example.com',
                     application_status: 'test'
                 };
 
@@ -2887,17 +2887,17 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         }
 
         // Test connection when page loads
-        window.addEventListener('load', () => {
-            setTimeout(async () => {
-                const connectionOk = await testDatabaseConnection();
-                if (connectionOk) {
-                    const setupOk = await checkDatabaseSetup();
-                    if (setupOk) {
-                        await checkRLSPolicies();
-                    }
-                }
-            }, 1000);
-        });
+        // window.addEventListener('load', () => {
+        //     setTimeout(async () => {
+        //         const connectionOk = await testDatabaseConnection();
+        //         if (connectionOk) {
+        //             const setupOk = await checkDatabaseSetup();
+        //             if (setupOk) {
+        //                 await checkRLSPolicies();
+        //             }
+        //         }
+        //     }, 1000);
+        // });
 
         // Debug panel for database testing
         function createDebugPanel() {
@@ -3238,7 +3238,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         async function submitApplication(event) {
             event.preventDefault();
 
-            console.log('🚀 Form submission started');
+            // console.log('🚀 Form submission started');
 
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -3249,7 +3249,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
             const Episode3 = document.getElementById('Episode3').value.trim();
             const storyIdea = document.getElementById('storyIdea').value.trim();
 
-            console.log('📝 Form data collected:', { name, email, mobile, portfolio, Episode1: !!Episode1, Episode2: !!Episode2, Episode3: !!Episode3, storyIdea: !!storyIdea });
+            // console.log('📝 Form data collected:', { name, email, mobile, portfolio, Episode1: !!Episode1, Episode2: !!Episode2, Episode3: !!Episode3, storyIdea: !!storyIdea });
 
             // Basic validation
             if (!name || !email || !mobile || !portfolio) {
@@ -3285,19 +3285,27 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
                 // Submit to BOTH Supabase AND Google Forms
 
                 // 1. SAVE TO SUPABASE
-                console.log('📤 Sending data to Supabase...');
+                // console.log('📤 Sending data to Supabase...');
 
                 const supabaseData = {
                     full_name: name,
                     email: email,
                     mobile_number: mobile,
-                    portfolio_url: portfolio,
+                    Profile_url: portfolio,
                     story_idea: storyIdea || null
                 };
 
-                // Only add video_link if it exists and is not empty
-                if ((videoLink && videoLink.trim())) {
-                    supabaseData.video_link = videoLink;
+                // Only add Episode1 if it exists and is not empty
+                if ((Episode1 && Episode1.trim())) {
+                    supabaseData.Episode1 = Episode1;
+                }
+                // Only add Episode2 if it exists and is not empty
+                if ((Episode2 && Episode2.trim())) {
+                    supabaseData.Episode2 = Episode2;
+                }
+                // Only add Episode3 if it exists and is not empty
+                if ((Episode3 && Episode3.trim())) {
+                    supabaseData.Episode3 = Episode3;
                 }
 
                 if (supabase) {
@@ -3311,7 +3319,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
                             console.error('❌ Supabase error:', supabaseError);
                             console.warn('⚠️ Supabase submission failed, but Google Forms was successful');
                         } else {
-                            console.log('✅ Data saved to Supabase successfully:', supabaseResponse);
+                            // console.log('✅ Data saved to Supabase successfully:', supabaseResponse);
                         }
                     } catch (error) {
                         console.error('❌ Supabase submission failed:', error);
@@ -3322,7 +3330,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
                 }
 
                 // 2. SEND TO GOOGLE FORMS
-                console.log('📤 Sending data to Google Forms...');
+                // console.log('📤 Sending data to Google Forms...');
 
                 // GOOGLE FORM ENTRY MAPPING
                 const formData = new URLSearchParams();
@@ -3330,7 +3338,9 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
                 formData.append("entry.1338576347", email);      // Email
                 formData.append("entry.701297568", mobile);     // Mobile
                 formData.append("entry.232409794", portfolio);   // Portfolio
-                formData.append("entry.674582317", videoLink);   // Video Link
+                formData.append("entry.674582317", Episode1);   // Video Link
+                formData.append("entry.1648149776", Episode2);   // Video Link
+                formData.append("entry.1493801585", Episode3);   // Video Link
                 formData.append("entry.1661514076", storyIdea);  // Story Idea
 
                 // SEND REQUEST TO GOOGLE FORMS
@@ -3346,7 +3356,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
                     }
                 );
 
-                console.log('✅ Google Form submitted successfully');
+                // console.log('✅ Google Form submitted successfully');
 
                 // Send confirmation email via EmailJS
                 if (typeof emailjs !== 'undefined') {
@@ -3358,7 +3368,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
                         };
 
                         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams);
-                        console.log('✅ Confirmation email sent via EmailJS');
+                        // console.log('✅ Confirmation email sent via EmailJS');
                     } catch (emailError) {
                         console.warn('⚠️ EmailJS error (form still submitted):', emailError);
                     }
@@ -3379,7 +3389,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
             } finally {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-                console.log('🔄 Form submission completed');
+                // console.log('🔄 Form submission completed');
             }
         }
 
