@@ -3185,6 +3185,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         // Modal functions
         function openModal() {
             fbq('track', 'button_click');
+            gtag('event','button_click')
             document.getElementById('applicationModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
             initScrollIndicators();
