@@ -3184,8 +3184,8 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
 
         // Modal functions
         function openModal() {
-            fbq('track', 'button_click');
-            gtag('event','button_click')
+            fbq('trackCustom', 'button_click');
+            gtag('event','button_click');
             document.getElementById('applicationModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
             initScrollIndicators();
@@ -3437,6 +3437,8 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
 
         // Form success message function
         function showFormSuccessMessage(message) {
+            fbq('trackCustom', 'form_submit');
+            gtag('event','form_submit');
             // Hide the form
             const form = document.getElementById('applicationForm');
             const formContainer = document.querySelector('.modal-form-container');
