@@ -16,7 +16,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -2570,7 +2570,7 @@
                             <circle cx="25" cy="25" r="22" stroke="currentColor" stroke-width="3" fill="none"
                                 stroke-dasharray="5 5" />
                         </svg> -->
-                        <img class="h-full w-full scale-150 object-contain " src="/img/logo/MCCLOI.jpeg" alt="baitak">
+                        <img class="h-full w-full scale-150 object-contain " src="/img/logo/MCCLOI.png" alt="MCCLOI">
                     </div>
                     <span
                         class="text-sm font-semibold text-slate-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white">
@@ -3187,7 +3187,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         // Modal functions
         function openModal() {
             fbq('trackCustom', 'button_click');
-            gtag('event','button_click');
+            gtag('event', 'button_click');
             document.getElementById('applicationModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
             initScrollIndicators();
@@ -3440,7 +3440,7 @@ ALTER TABLE creator_applications DISABLE ROW LEVEL SECURITY;
         // Form success message function
         function showFormSuccessMessage(message) {
             fbq('trackCustom', 'form_submit');
-            gtag('event','form_submit');
+            gtag('event', 'form_submit');
             // Hide the form
             const form = document.getElementById('applicationForm');
             const formContainer = document.querySelector('.modal-form-container');
